@@ -31,7 +31,37 @@
           </div>
         </side-section>
         <side-section>
-          <div slot="sidecontent"></div>
+          <div slot="sidecontent">
+            <div class="message">
+              <h3 class="message-title">留言</h3>
+              <div class="message-list">
+                <ul>
+                  <li class="message-item">
+                    <a href="">
+                      <div class="message-avatar">
+                        <img src="../../static/images/message-avatar.png" alt="message user's default avatar">
+                      </div>
+                      <div class="message-content">
+                        <span class="title">测试</span>
+                        <span class="text">测试用留言内容1</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="message-item">
+                    <a href="">
+                      <div class="message-avatar">
+                        <img src="../../static/images/message-avatar.png" alt="message user's default avatar">
+                      </div>
+                      <div class="message-content">
+                        <span class="title">测试</span>
+                        <span class="text">测试用留言内容内容内容内容内容内容内容内容内容内容</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </side-section>
       </div>
     </div>
@@ -133,9 +163,9 @@
               &:last-child {
                 margin-right: 0;
               }
-              img{
-                width:36px;
-                border:1px solid rgba(201, 199, 201,0.4);
+              img {
+                width: 36px;
+                border: 1px solid rgba(201, 199, 201, 0.4);
                 border-radius: 50%;
               }
             }
@@ -143,6 +173,52 @@
           @media(max-width:1265px) {
             .avatar {
               display: none;
+            }
+          }
+          .message {
+            margin-top: 30px;
+            padding: 10px;
+            .message-title {
+              padding: 5px 0;
+              font-size: 18px;
+              font-weight: 700;
+              border-bottom: 1px solid rgb(147, 153, 159);
+              text-indent: 10px;
+            }
+            .message-list {
+              padding: 10px;
+              .message-item {
+                position: relative;
+                margin-bottom: 10px;
+                padding: 5px 0;
+                border-bottom: 1px dashed rgba(147, 153, 159, 0.5);
+                &:last-child {
+                  margin: 0;
+                  border: none;
+                }
+                .message-avatar {
+                  display: inline-block;
+                  margin-right: 10px;
+                }
+                .message-content {
+                  display: inline-block;
+                  vertical-align: top;
+                  font-size: 0;
+                  .title {
+                    display: block;
+                    margin-bottom: 6px;
+                    font-size: 14px;
+                  }
+                  .text {
+                    display: inline-block;
+                    width: 220px;
+                    font-size: 12px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  }
+                }
+              }
             }
           }
         }
