@@ -40,6 +40,7 @@
           }
         }
         &:after {
+          display: block;
           clear: both;
           content: '';
         }
