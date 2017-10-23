@@ -13,22 +13,25 @@
       <div class="side">
         <side-section>
           <div slot="sidecontent">
+            <div class="avatar">
+              <img src="../../static/images/avatar.jpg" alt="my avatar" class="image">
+            </div>
             <div class="desc">
               <h3 class="name">Christopher</h3>
               <p class="text">coder not good at code</p>
             </div>
-            <div class="avatar">
-              <img src="../../static/images/avatar.jpg" alt="my avatar" class="image">
-            </div>
             <div class="social">
               <ul>
-                <li class="type"><img src="" alt=""></li>
-                <li class="type"><img src="" alt=""></li>
-                <li class="type"><img src="" alt=""></li>
-                <li class="type"><img src="" alt=""></li>
+                <li class="type"><img src="../../static/images/social-github.png" alt="github:jscc2333@github.com" title="github:jscc2333@github.com"></li>
+                <li class="type"><img src="../../static/images/social-gmail.png" alt="gmail:jscc2333@gmail.com" title="gmail:jscc2333@gmail.com"></li>
+                <li class="type"><img src="../../static/images/social-twitter.png" alt="" title="twitter"></li>
+                <li class="type"><img src="../../static/images/social-wechat.png" alt="wechat:" title="wechat"></li>
               </ul>
             </div>
           </div>
+        </side-section>
+        <side-section>
+          <div slot="sidecontent"></div>
         </side-section>
       </div>
     </div>
@@ -83,19 +86,10 @@
       width: 80%;
       margin: 0 auto;
       margin-top: -30px;
-      @media (max-width: 800px) {
-        .article-list {
-          width: 100%;
-        }
-        .side {
-          display: none;
-          width: 0;
-        }
-      }
       .article-list {
         display: inline-block;
         width: 60%;
-        transition: width .5s;
+        transition: width .5s linear;
         margin-right: 3%;
       }
       .side {
@@ -104,7 +98,19 @@
         padding-top: 50px;
         width: 30%;
         .section {
+          .avatar {
+            display: inline-block;
+            padding: 10px;
+            margin-right: 25px;
+            vertical-align: middle;
+            .image {
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+            }
+          }
           .desc {
+            display: inline-block;
             margin-bottom: 15px;
             .name {
               height: 30px;
@@ -118,14 +124,36 @@
               color: rgba(49, 53, 48, 0.5);
             }
           }
-          .avatar {
-            padding: 10px;
-            .image {
-              width: 200px;
-              height: 200px;
-              border-radius: 50%;
+          .social {
+            width: 100%;
+            text-align: center;
+            .type {
+              display: inline-block;
+              margin-right: 20px;
+              &:last-child {
+                margin-right: 0;
+              }
+              img{
+                width:36px;
+                border:1px solid rgba(201, 199, 201,0.4);
+                border-radius: 50%;
+              }
             }
           }
+          @media(max-width:1265px) {
+            .avatar {
+              display: none;
+            }
+          }
+        }
+      }
+      @media (max-width: 950px) {
+        .article-list {
+          width: 100%;
+        }
+        .side {
+          display: none;
+          width: 0;
         }
       }
     }
