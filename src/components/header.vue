@@ -6,8 +6,10 @@
           <ul class="main-menu">
             <li class="main-item">
               <span class="title">
-                <i class="icon-home"></i>
-                首页
+                <router-link to="/">
+                  <i class="icon-home"></i>
+                  首页
+                </router-link>
               </span>
             </li>
             <li class="main-item" @mouseenter="slideDownSubMenu($event)" @mouseleave="slideUpSubMenu($event)">
@@ -34,14 +36,18 @@
             </li>
             <li class="main-item">
               <span class="title">
-                <i class="icon-message"></i>
-                留言
+                <router-link to="/message">
+                  <i class="icon-message"></i>
+                  留言
+                </router-link>
               </span>
             </li>
             <li class="main-item">
               <span class="title">
-                <i class="icon-about"></i>
-                关于
+                <router-link to="/about">
+                  <i class="icon-about"></i>
+                  关于
+                </router-link>
               </span>
             </li>
           </ul>
@@ -103,7 +109,7 @@
             text-align: left;
             cursor: pointer;
             .title {
-              padding: 4px
+              padding: 4px;
             }
           }
           &.slide-enter,
@@ -115,6 +121,9 @@
           &.slide-leave-active {
             transition: all .8s linear;
           }
+        }
+        a {
+          color: #fff;
         }
       }
     }

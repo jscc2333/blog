@@ -26,6 +26,31 @@
       </p>
       <p class="date">发布于 2017-10-19 12:12</p>
     </article>
+    <article class="article">
+      <h2 class="title">测试用标题2</h2>
+      <div class="label">
+        <a href="">HTML</a>
+      </div>
+      <div class="content">
+        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+      </div>
+      <p class="more">
+        <a href="">阅读全文</a>
+      </p>
+      <p class="date">发布于 2017-10-19 12:12</p>
+    </article><article class="article">
+      <h2 class="title">测试用标题3</h2>
+      <div class="label">
+        <a href="">HTML</a>
+      </div>
+      <div class="content">
+        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+      </div>
+      <p class="more">
+        <a href="">阅读全文</a>
+      </p>
+      <p class="date">发布于 2017-10-22 13:13</p>
+    </article>
     <div class="page">
       <span class="pre">
         <a href="">上一页</a>

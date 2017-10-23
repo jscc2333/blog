@@ -1,13 +1,7 @@
 <template>
   <div class="blog">
     <blog-header></blog-header>
-    <div class="banner">
-      <div class="title-container">
-        <div class="title">
-          <h1>C Blog</h1>
-        </div>
-      </div>
-    </div>
+    <banner></banner>
     <div class="main">
       <article-list class="article-list"></article-list>
       <div class="side">
@@ -62,55 +56,34 @@
               </div>
             </div>
           </div>
+          <blog-footer></blog-footer>
         </side-section>
       </div>
     </div>
+    <blog-footer></blog-footer>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import blogHeader from '@/components/header'
+  import banner from '@/components/banner'
   import articleList from '@/components/articleList'
   import sideSection from '@/components/sideSection'
+  import blogFooter from '@/components/footer'
 
   export default {
     components: {
       blogHeader,
       articleList,
       sideSection,
+      blogFooter,
+      banner,
     },
   }
 </script>
 
 <style lang="less">
   .blog {
-    .banner {
-      position: relative;
-      background: url('../../static/images/banner.jpg') center no-repeat;
-      background-size: cover;
-      height: 260px;
-      .title-container {
-        position: relative;
-        top: 40px;
-        width: 80%;
-        padding: 50px;
-        margin: 0 auto;
-        .title {
-          float: left;
-          h1 {
-            font-size: 40px;
-            font-family: sans-serif;
-            text-align: left;
-            text-shadow: 0 2px #f3f5f7;
-            color: rgba(255, 255, 255, 0.8);
-          }
-          &:after {
-            clear: both;
-            content: '';
-          }
-        }
-      }
-    }
     .main {
       position: relative;
       width: 80%;
@@ -170,7 +143,7 @@
               }
             }
           }
-          @media(max-width:1265px) {
+          @media(max-width:1280px) {
             .avatar {
               display: none;
             }
@@ -216,6 +189,9 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                    @media(max-width: 1280px) {
+                      width:150px;
+                    }
                   }
                 }
               }
@@ -223,14 +199,15 @@
           }
         }
       }
-      @media (max-width: 950px) {
-        .article-list {
-          width: 100%;
-        }
+      @media (max-width:1000px) {
         .side {
           display: none;
+          font-size: 0;
           width: 0;
         }
+        .article-list {
+          width: 100%;
+        } 
       }
     }
   }
