@@ -19,7 +19,7 @@
 <style lang="less">
   .banner {
     position: relative;
-    background: url('../../static/images/banner.jpg') center no-repeat;
+    background: url('../../static/images/banner-bg.jpg') center no-repeat;
     background-size: cover;
     height: 260px;
     .title-container {
@@ -36,7 +36,11 @@
           text-align: left;
           text-shadow: 0 2px #f3f5f7;
           a {
+            transition: all .3s;
             color: rgba(255, 255, 255, 0.8);
+            &:hover{
+              font-size: 45px;
+            }
           }
         }
         &:after {

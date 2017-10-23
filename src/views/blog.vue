@@ -36,7 +36,7 @@
                         <img src="../../static/images/message-avatar.png" alt="message user's default avatar">
                       </div>
                       <div class="message-content">
-                        <span class="title">测试</span>
+                        <span class="name">测试</span>
                         <span class="text">测试用留言内容1</span>
                       </div>
                     </a>

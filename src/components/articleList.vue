@@ -38,7 +38,8 @@
         <a href="">阅读全文</a>
       </p>
       <p class="date">发布于 2017-10-19 12:12</p>
-    </article><article class="article">
+    </article>
+    <article class="article">
       <h2 class="title">测试用标题3</h2>
       <div class="label">
         <a href="">HTML</a>
