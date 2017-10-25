@@ -70,7 +70,6 @@
       },
       changeTag(tagIndex) {
         this.$store.commit('changeTag', { tag: this.tagList[tagIndex] })
-        console.log(this.$router)
         if (this.$route.name !== 'Blog') {
           this.$router.push('/home')
         }

@@ -13,10 +13,10 @@
     </article>
     <div class="page">
       <span class="pre">
-        <a href="">上一页</a>
+        <a href="javascript:void(0)" @click="getPrePage()">上一页</a>
       </span>
       <span class="next">
-        <a href="">下一页</a>
+        <a href="javascript:void(0)" @click="getNextPage()">下一页</a>
       </span>
     </div>
   </div>
@@ -56,12 +56,28 @@
         return convertTag(tag)
       },
       getTagList() {
-        axios.post('/api/blogs', { category: this.tagSelect })
-          .then((res) => {
-            this.articleList = res.data
-          }).catch((err) => {
-            console.log(err)
-          })
+        axios.post('/api/blogs', {
+          category: this.tagSelect,
+          skipNumber: (this.page - 1) * this.pageSize,
+        }).then((res) => {
+          this.articleList = res.data[0]
+          this.count = res.data[1]
+        }).catch((err) => {
+          console.log(err)
+        })
+      },
+      getPrePage() {
+        if (this.page === 1) {
+          return
+        }
+        this.page -= 1
+        this.getTagList()
+      },
+      getNextPage() {
+        if (this.page < Math.ceil(this.count / this.pageSize)) {
+          this.page += 1
+          this.getTagList()
+        }
       },
     },
   }
