@@ -3,7 +3,7 @@
     <blog-header></blog-header>
     <banner></banner>
     <div class="main">
-      <article-list class="article-list"></article-list>
+      <article-list class="article-list" :tagSelect="getTagSelect"></article-list>
       <div class="side">
         <side-section>
           <div slot="sidecontent">
@@ -72,6 +72,18 @@
   import blogFooter from '@/components/footer'
 
   export default {
+    data() {
+      return {
+
+      }
+    },
+    created() {
+    },
+    computed: {
+      getTagSelect() {
+        return this.$store.state.tagSelect
+      },
+    },
     components: {
       blogHeader,
       articleList,
@@ -207,7 +219,7 @@
         }
         .article-list {
           width: 100%;
-        } 
+        }
       }
     }
   }

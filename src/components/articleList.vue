@@ -1,56 +1,15 @@
 <template>
   <div class="article-list">
-    <article class="article">
-      <h2 class="title">测试用标题</h2>
+    <article class="article" v-for="(article,articleIndex) in articleList" :key="articleIndex">
+      <h2 class="title">{{article.blog_title}}</h2>
       <div class="label">
-        <a href="">CSS</a>
+        <a href="">{{getTag(article.blog_category)}}</a>
       </div>
-      <div class="content">
-        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-      </div>
+      <div class="content">{{article.blog_content}}</div>
       <p class="more">
         <a href="">阅读全文</a>
       </p>
-      <p class="date">发布于 2017-10-19 11:11</p>
-    </article>
-    <article class="article">
-      <h2 class="title">测试用标题2</h2>
-      <div class="label">
-        <a href="">HTML</a>
-      </div>
-      <div class="content">
-        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-      </div>
-      <p class="more">
-        <a href="">阅读全文</a>
-      </p>
-      <p class="date">发布于 2017-10-19 12:12</p>
-    </article>
-    <article class="article">
-      <h2 class="title">测试用标题2</h2>
-      <div class="label">
-        <a href="">HTML</a>
-      </div>
-      <div class="content">
-        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-      </div>
-      <p class="more">
-        <a href="">阅读全文</a>
-      </p>
-      <p class="date">发布于 2017-10-19 12:12</p>
-    </article>
-    <article class="article">
-      <h2 class="title">测试用标题3</h2>
-      <div class="label">
-        <a href="">HTML</a>
-      </div>
-      <div class="content">
-        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-      </div>
-      <p class="more">
-        <a href="">阅读全文</a>
-      </p>
-      <p class="date">发布于 2017-10-22 13:13</p>
+      <p class="date">发布于 {{article.blog_time}}</p>
     </article>
     <div class="page">
       <span class="pre">
@@ -64,13 +23,46 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import axios from 'axios'
+  import { convertTag } from '@/assets/js/utils'
+
   export default {
     data() {
       return {
         articleList: [],
+        page: 1,
+        pageSize: 10,
+        count: 0,
       }
     },
+    props: {
+      tagSelect: String,
+    },
+    watch: {
+      tagSelect() {
+        this.getTagList()
+      },
+    },
+    computed: {
+
+    },
     components: {
+    },
+    created() {
+      this.getTagList()
+    },
+    methods: {
+      getTag(tag) {
+        return convertTag(tag)
+      },
+      getTagList() {
+        axios.post('/api/blogs', { category: this.tagSelect })
+          .then((res) => {
+            this.articleList = res.data
+          }).catch((err) => {
+            console.log(err)
+          })
+      },
     },
   }
 </script>

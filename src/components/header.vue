@@ -19,17 +19,8 @@
               </span>
               <transition name="slide">
                 <ul class="sub-menu" v-show="slideMenu">
-                  <li class="sub-item">
-                    <span class="title">杂谈</span>
-                  </li>
-                  <li class="sub-item">
-                    <span class="title">JavaScript</span>
-                  </li>
-                  <li class="sub-item">
-                    <span class="title">CSS</span>
-                  </li>
-                  <li class="sub-item">
-                    <span class="title">Vue</span>
+                  <li class="sub-item" v-for="(tag,tagIndex) in tagList" :key="tagIndex" @click="changeTag(tagIndex)">
+                    <span class="title">{{getTag(tag)}}</span>
                   </li>
                 </ul>
               </transition>
@@ -58,13 +49,25 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { convertTag } from '@/assets/js/utils'
+
   export default {
     data() {
       return {
+        tagList: ['all', 'other', 'js', 'css', 'vue'],
         slideMenu: false,
       }
     },
+    computed: {
+
+    },
     methods: {
+      getTag(tag) {
+        return convertTag(tag)
+      },
+      changeTag(tagIndex) {
+        this.$store.commit('changeTag', { tag: this.tagList[tagIndex] })
+      },
       slideDownSubMenu() {
         this.slideMenu = true
       },
