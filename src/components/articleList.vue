@@ -40,6 +40,8 @@
     },
     watch: {
       tagSelect() {
+        this.page = 1
+        this.count = 0
         this.getTagList()
       },
     },
