@@ -7,7 +7,7 @@ import store from './store/store'
 
 Vue.config.productionTip = false
 
-router.push('/')
+router.push('/home')
 
 /* eslint-disable no-new */
 new Vue({

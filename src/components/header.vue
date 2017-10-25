@@ -4,9 +4,9 @@
       <nav class="site-navigation">
         <div class="nav-menu">
           <ul class="main-menu">
-            <li class="main-item">
+            <li class="main-item" @click="resetTag()">
               <span class="title">
-                <router-link to="/">
+                <router-link to="/home">
                   <i class="icon-home"></i>
                   首页
                 </router-link>
@@ -64,6 +64,9 @@
     methods: {
       getTag(tag) {
         return convertTag(tag)
+      },
+      resetTag() {
+        this.$store.commit('changeTag', { tag: 'all' })
       },
       changeTag(tagIndex) {
         this.$store.commit('changeTag', { tag: this.tagList[tagIndex] })

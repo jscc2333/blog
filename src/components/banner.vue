@@ -2,8 +2,8 @@
   <div class="banner">
     <div class="title-container">
       <div class="title">
-        <h1>
-          <router-link to="/">C Blog</router-link>
+        <h1 @click="resetTag()">
+          <router-link to="/home">C Blog</router-link>
         </h1>
       </div>
     </div>
@@ -12,7 +12,11 @@
 
 <script type="text/ecmascript-6">
   export default {
-
+    methods: {
+      resetTag() {
+        this.$store.commit('changeTag', { tag: 'all' })
+      },
+    },
   }
 </script>
 
@@ -38,7 +42,7 @@
           a {
             transition: all .3s;
             color: rgba(255, 255, 255, 0.8);
-            &:hover{
+            &:hover {
               font-size: 45px;
             }
           }

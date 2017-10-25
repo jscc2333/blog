@@ -10,9 +10,10 @@ export default new Router({
   mode: 'history',
   base: './',
   routes: [{
-    path: '/',
+    path: '/home',
     name: 'BLog',
     component: Blog,
+
   }, {
     path: '/message',
     name: 'Message',
