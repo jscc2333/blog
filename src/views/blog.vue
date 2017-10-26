@@ -61,6 +61,7 @@
       </div>
     </div>
     <blog-footer></blog-footer>
+    <scroll-top></scroll-top>
   </div>
 </template>
 
@@ -70,6 +71,7 @@
   import articleList from '@/components/articleList'
   import sideSection from '@/components/sideSection'
   import blogFooter from '@/components/footer'
+  import scrollTop from '@/components/scrollTop'
 
   export default {
     data() {
@@ -90,6 +92,7 @@
       sideSection,
       blogFooter,
       banner,
+      scrollTop,
     },
   }
 </script>

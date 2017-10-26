@@ -21,4 +21,6 @@ export function convertTag(tag) {
   }
 }
 
-export function a() {}
+export function scrollTop() {
+
+}
