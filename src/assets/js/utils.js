@@ -10,6 +10,12 @@ export function convertTag(tag) {
       return 'CSS'
     case 'vue':
       return 'vue'
+    case 'html5':
+      return 'HTML5'
+    case 'react':
+      return 'react'
+    case 'weex':
+      return 'weex'
     default:
       return '全部'
   }

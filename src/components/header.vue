@@ -49,14 +49,25 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import axios from 'axios'
   import { convertTag } from '@/assets/js/utils'
 
   export default {
     data() {
       return {
-        tagList: ['all', 'other', 'js', 'css', 'vue'],
+        tagList: ['all'],
         slideMenu: false,
       }
+    },
+    created() {
+      axios.get('/api/categories')
+        .then((res) => {
+          res.data.forEach((item) => {
+            this.tagList.push(item.category_name)
+          })
+        }).catch((err) => {
+          console.error(err)
+        })
     },
     computed: {
 

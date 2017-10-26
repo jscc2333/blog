@@ -2,8 +2,8 @@
   <div class="article-list">
     <article class="article" v-for="(article,articleIndex) in articleList" :key="articleIndex">
       <h2 class="title">{{article.blog_title}}</h2>
-      <div class="label">
-        <a href="">{{getTag(article.blog_category)}}</a>
+      <div class="label" @click="changeTag(article.blog_category)">
+        <a href="javascript:void(0)">{{getTag(article.blog_category)}}</a>
       </div>
       <div class="content">{{article.blog_content}}</div>
       <p class="more">
@@ -57,6 +57,12 @@
       getTag(tag) {
         return convertTag(tag)
       },
+      changeTag(tag) {
+        this.$store.commit('changeTag', { tag })
+        if (this.$route.name !== 'Blog') {
+          this.$router.push('/home')
+        }
+      },
       getTagList() {
         axios.post('/api/blogs', {
           category: this.tagSelect,
@@ -65,7 +71,7 @@
           this.articleList = res.data[0]
           this.count = res.data[1]
         }).catch((err) => {
-          console.log(err)
+          console.error(err)
         })
       },
       getPrePage() {
