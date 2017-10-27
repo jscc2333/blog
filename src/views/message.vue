@@ -48,6 +48,7 @@
       </div>
     </div>
     <blog-footer></blog-footer>
+    <scroll-top></scroll-top>
   </div>
 </template>
 
@@ -55,12 +56,14 @@
   import blogHeader from '@/components/header'
   import banner from '@/components/banner'
   import blogFooter from '@/components/footer'
+  import scrollTop from '@/components/scrollTop'
 
   export default {
     components: {
       blogHeader,
       banner,
       blogFooter,
+      scrollTop,
     },
   }
 </script>
@@ -173,7 +176,7 @@
             a {
               display: inline-block;
               padding: 5px;
-              color:#000;
+              color: #000;
               border-radius: 3px;
             }
           }

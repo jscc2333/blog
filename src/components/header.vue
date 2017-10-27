@@ -1,51 +1,53 @@
 <template>
-  <div class="header">
-    <div class="nav-container">
-      <nav class="site-navigation">
-        <div class="nav-menu">
-          <ul class="main-menu">
-            <li class="main-item" @click="resetTag()">
-              <span class="title">
-                <router-link to="/home">
-                  <i class="icon-home"></i>
-                  首页
-                </router-link>
-              </span>
-            </li>
-            <li class="main-item" @mouseenter="slideDownSubMenu($event)" @mouseleave="slideUpSubMenu($event)">
-              <span class="title">
-                <i class="icon-list"></i>
-                分类
-              </span>
-              <transition name="slide">
-                <ul class="sub-menu" v-show="slideMenu">
-                  <li class="sub-item" v-for="(tag,tagIndex) in tagList" :key="tagIndex" @click="changeTag(tagIndex)">
-                    <span class="title">{{getTag(tag)}}</span>
-                  </li>
-                </ul>
-              </transition>
-            </li>
-            <li class="main-item">
-              <span class="title">
-                <router-link to="/message">
-                  <i class="icon-message"></i>
-                  留言
-                </router-link>
-              </span>
-            </li>
-            <li class="main-item">
-              <span class="title">
-                <router-link to="/about">
-                  <i class="icon-about"></i>
-                  关于
-                </router-link>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <transition name="slide">
+    <div class="header" v-show="show">
+      <div class="nav-container">
+        <nav class="site-navigation">
+          <div class="nav-menu">
+            <ul class="main-menu">
+              <li class="main-item" @click="resetTag()">
+                <span class="title">
+                  <router-link to="/home">
+                    <i class="icon-home"></i>
+                    首页
+                  </router-link>
+                </span>
+              </li>
+              <li class="main-item" @mouseenter="slideDownSubMenu($event)" @mouseleave="slideUpSubMenu($event)">
+                <span class="title">
+                  <i class="icon-list"></i>
+                  分类
+                </span>
+                <transition name="slide">
+                  <ul class="sub-menu" v-show="slideMenu">
+                    <li class="sub-item" v-for="(tag,tagIndex) in tagList" :key="tagIndex" @click="changeTag(tagIndex)">
+                      <span class="title">{{getTag(tag)}}</span>
+                    </li>
+                  </ul>
+                </transition>
+              </li>
+              <li class="main-item">
+                <span class="title">
+                  <router-link to="/message">
+                    <i class="icon-message"></i>
+                    留言
+                  </router-link>
+                </span>
+              </li>
+              <li class="main-item">
+                <span class="title">
+                  <router-link to="/about">
+                    <i class="icon-about"></i>
+                    关于
+                  </router-link>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script type="text/ecmascript-6">
@@ -57,6 +59,7 @@
       return {
         tagList: ['all'],
         slideMenu: false,
+        show: true,
       }
     },
     created() {
@@ -68,6 +71,7 @@
         }).catch((err) => {
           console.error(err)
         })
+      window.addEventListener('scroll', this.scrollHandler)
     },
     computed: {
 
@@ -91,6 +95,10 @@
       slideUpSubMenu() {
         this.slideMenu = false
       },
+      scrollHandler() {
+        const top = document.documentElement.scrollTop || document.body.scrollTop
+        this.show = top < 300
+      },
     },
   }
 </script>
@@ -104,6 +112,15 @@
     top: 0;
     z-index: 1;
     background: rgba(0, 0, 0, 0.4);
+    &.slide-enter,
+    &.slide-leave-active {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0)
+    }
+    &.slide-enter-active,
+    &.slide-leave-active {
+      transition: all .3s linear;
+    }
     .nav-container {
       width: 80%;
       margin: 0 auto;
